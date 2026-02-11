@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../model/ride_pref/ride_pref.dart';
 import '../../services/ride_prefs_service.dart';
 import '../../theme/theme.dart';
-
+import '../../widgets/actions/bla_button.dart';
 import 'widgets/ride_pref_form.dart';
 import 'widgets/ride_pref_history_tile.dart';
 
@@ -79,6 +79,23 @@ class _RidePrefScreenState extends State<RidePrefScreen> {
                     ),
                   ),
                 ),
+              ),
+
+              SizedBox(height: 20),
+
+              BlaButton(
+                label: 'Search',
+                onPressed: () => print('pressed search'),
+                isPrimary: false,
+              ),
+
+              SizedBox(height: 20),
+
+              BlaButton(
+                label: 'Contact Volodia',
+                icon: Icons.message_outlined,
+                isPrimary: true,
+                onPressed: () => print('pressed contact'),
               ),
             ],
           ),
