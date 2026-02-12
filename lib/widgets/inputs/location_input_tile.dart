@@ -19,12 +19,17 @@ class LocationInputTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Tile value: ${value?.name}, ${value?.country.name}");
+
     return ListTile(
       tileColor: BlaColors.textLight,
       title: Text(
-        value?.name ?? placeholder,
+        value != null ? value!.name : placeholder, 
         style: BlaTextStyles.body.copyWith(color: BlaColors.textNormal),
       ),
+      subtitle: value != null
+          ? Text(value!.country.name)
+          : null,
       leading: const Icon(Icons.circle_outlined, color: Colors.blueGrey),
       trailing: trailing,
       onTap: onTap,

@@ -6,6 +6,7 @@ import '../../../theme/theme.dart';
 import '../../../widgets/display/bla_divider.dart';
 import 'package:intl/intl.dart';
 import '../../../widgets/inputs/location_input_tile.dart';
+import '../../../widgets/inputs/location_picker.dart';
 
 ///
 /// A Ride Preference From is a view to select:
@@ -49,12 +50,24 @@ class _RidePrefFormState extends State<RidePrefForm> {
   // ----------------------------------
   // Handle events
   // ----------------------------------
-  void _onSelectDeparture() {
-    //todo
+  void _onSelectDeparture() async {
+    final selected = await Navigator.push<Location>(
+      context,
+      MaterialPageRoute(builder: (_) => const LocationPicker()),
+    );
+    if (selected != null) {
+      setState(() => departure = selected);
+    }
   }
 
-  void _onSelectArrival() {
-    //todo
+  void _onSelectArrival() async {
+    final selected = await Navigator.push<Location>(
+      context,
+      MaterialPageRoute(builder: (_) => const LocationPicker()),
+    );
+    if (selected != null) {
+      setState(() => arrival = selected);
+    }
   }
 
   void _onSelectDate() {
@@ -74,12 +87,12 @@ class _RidePrefFormState extends State<RidePrefForm> {
   }
 
   void _onSearch() {
-    if (departure != null && arrival != null) {
-      debugPrint("Search tapped with valid form");
-      // TODO: return RidePref
-    } else {
-      debugPrint("Form incomplete");
-    }
+    // if (departure != null && arrival != null) {
+    //   debugPrint("Search tapped with valid form");
+    //   // TODO: return RidePref
+    // } else {
+    //   debugPrint("Form incomplete");
+    // }
   }
 
   // ----------------------------------
